@@ -1,0 +1,157 @@
+/* .game-main{
+    text-align: center;
+    background-color: #f9f9f9;
+    margin-top: 50px;
+    background-color: #FFD700;
+    width:70%;
+    margin: 0 auto;
+    border-radius: 20px;
+    margin-top: 50px;
+}
+
+.game-animation{
+    height:500px;
+}
+.game-info{
+    text-align: center;
+    margin: auto 0;
+    width: 50%;
+    padding-right: 1rem;
+}
+.game-explore{
+    margin-top: 20px;
+    font-size: 1.5rem;
+}
+.gameImage{
+    width:50%;
+    height:40%;
+    margin: 10px 0;
+}
+.game-explore a{
+    text-decoration: none;
+    color:#fff;
+
+}
+.game-title{
+    font-size: 3rem;
+    font-weight: 700;
+    color:#fff;
+}
+.game-div{
+    display: flex;
+    justify-content: space-around;
+    justify-items: flex-start;
+} */
+
+.game-main {
+    text-align: center;
+    background-color: #FFD700;
+    width: 70%;
+    margin: 0 auto;
+    margin-top: 50px;
+    border-radius: 20px;
+    padding: 20px; /* Added padding for better spacing */
+}
+
+.game-animation {
+    height: 500px;
+    max-width: 100%; /* Ensures animation scales properly */
+}
+
+.game-info {
+    text-align: center;
+    margin: auto 0;
+    width: 50%;
+    padding-right: 1rem;
+}
+
+.game-explore {
+    margin-top: 20px;
+    font-size: 1.5rem;
+}
+
+.gameImage {
+    width: 50%;
+    height: auto; /* Maintain aspect ratio */
+    margin: 10px 0;
+}
+
+.game-explore a {
+    text-decoration: none;
+    color: #fff;
+}
+
+.game-title {
+    font-size: 3rem;
+    font-weight: 700;
+    color: #fff;
+}
+
+.game-div {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap; /* Allows content to wrap on smaller screens */
+}
+
+/* Media Queries */
+
+/* For tablets (max-width: 768px) */
+@media (max-width: 768px) {
+    .game-main {
+        width: 90%;
+    }
+
+    .game-div {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .game-title {
+        font-size: 2.5rem;
+    }
+
+    .game-info {
+        width: 70%; /* Increase width for better readability */
+        padding-right: 0; /* Remove padding for narrow screens */
+    }
+
+    .game-animation {
+        height: 300px; /* Adjust height for smaller screens */
+    }
+
+    .game-explore {
+        font-size: 1.2rem;
+    }
+
+    .gameImage {
+        width: 70%; /* Expand image width */
+    }
+}
+
+/* For mobile devices (max-width: 480px) */
+@media (max-width: 480px) {
+    .game-main {
+        width: 95%;
+    }
+
+    .game-title {
+        font-size: 2rem;
+    }
+
+    .game-info {
+        width: 90%; /* Full width for smaller screens */
+    }
+
+    .game-animation {
+        height: 200px; /* Reduce animation height for mobiles */
+    }
+
+    .game-explore {
+        font-size: 1rem;
+    }
+
+    .gameImage {
+        width: 90%; /* Expand image width */
+    }
+}

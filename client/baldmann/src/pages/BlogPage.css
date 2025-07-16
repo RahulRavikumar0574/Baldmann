@@ -1,0 +1,183 @@
+/* Default styles */
+body {
+    margin: 0;
+    overflow-x: hidden; /* Prevent horizontal scrolling */
+    line-height: 1.6;
+}
+
+.blog-content-page {
+    padding: 150px 20px;
+    max-width: 60%;
+    margin: 0 auto;
+    box-sizing: border-box; /* Ensure padding doesn't overflow the container */
+    overflow-wrap: break-word; /* Break long words if necessary */
+}
+
+.blog-heading{
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    word-wrap: break-word; /* Prevent long words from overflowing */
+}
+
+h2 {
+    font-size: 1.7rem;
+    margin-top: 20px;
+}
+
+h3 {
+    font-size: 1.5rem;
+    margin-top: 15px;
+}
+
+.blog-page-content{
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+    line-height: 1.8;
+    word-wrap: break-word; /* Prevent overflow for long words in paragraphs */
+}
+
+.author {
+    color: #FFD700;
+    font-size: 1.5rem;
+    font-weight: 500;
+    padding-bottom: 20px;
+}
+
+/* Image Styling */
+.hrithika-blog {
+    max-width: 100%; /* Make the container responsive */
+    height: auto; /* Ensure proportional scaling */
+    margin: 20px 0;
+}
+
+.blog-image img {
+    max-width: 100%; /* Scale the image to fit its container */
+    height: auto; /* Maintain aspect ratio */
+    margin: 20px 0;
+    border-radius: 8px;
+    display: block; /* Fix inline spacing issues */
+}
+
+/* Comparison Table */
+.comparison-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    table-layout: fixed; /* Prevents table from expanding too wide */
+}
+
+.comparison-table th,
+.comparison-table td {
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: left;
+    word-wrap: break-word; /* Break long words in table cells */
+}
+
+.comparison-table th {
+    background-color: #f4f4f4;
+    font-weight: bold;
+}
+
+/* Navbar and Footer Fixes */
+.navbar, .footer {
+    width: 100%;
+    max-width: 100%; /* Prevents content overflow */
+    overflow-x: hidden;
+}
+
+/* Universal Reset */
+* {
+    box-sizing: border-box; /* Includes padding and border in element's width */
+    max-width: 100%; /* Constrain elements to viewport width */
+}
+
+/* Media Queries for responsiveness */
+
+/* Tablets */
+@media (max-width: 768px) {
+    .blog-content-page {
+        padding: 80px 20px;
+        max-width: 90%;
+    }
+
+    h1 {
+        font-size: 2rem;
+        margin-top: 3rem;
+    }
+
+    h2 {
+        font-size: 0.9rem;
+    }
+
+    h3 {
+        font-size: 1.2rem;
+    }
+
+    p {
+        font-size: 1rem;
+    }
+
+    .author {
+        font-size: 1.3rem;
+    }
+
+    .hrithika-blog {
+        height: auto; /* Make height responsive */
+    }
+
+    .comparison-table th,
+    .comparison-table td {
+        font-size: 0.9rem;
+    }
+}
+
+/* Mobile Phones */
+@media (max-width: 480px) {
+    .blog-content-page {
+        padding: 50px 10px;
+        max-width: 95%;
+    }
+
+    h1 {
+        font-size: 1.5rem;
+        margin-top: 3rem;
+    }
+
+    h2 {
+        font-size: 0.8rem;
+    }
+
+    h3 {
+        font-size: 1rem;
+    }
+
+    p {
+        font-size: 0.9rem;
+    }
+
+    .author {
+        font-size: 1.2rem;
+    }
+
+    .hrithika-blog {
+        height: auto; /* Ensure the height adapts */
+    }
+
+    .comparison-table th,
+    .comparison-table td {
+        font-size: 0.8rem;
+        padding: 8px;
+    }
+
+    .comparison-table {
+        font-size: 0.9rem;
+    }
+}
+
+/* Prevents horizontal scrolling and white space issues */
+html, body {
+    margin: 0;
+    overflow-x: hidden; /* Enforce no horizontal scroll */
+    width: 100%;
+}

@@ -1,0 +1,154 @@
+/* Base styles for larger screens */
+.contact-container {
+  display: flex;
+  background-color: #FFD700;
+  padding: 40px;
+  border-radius: 20px;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1000px;
+  margin: 80px auto;
+}
+
+.connect-section {
+  text-align: center;
+  flex: 1;
+}
+
+.connect-section h2 {
+  font-size: 3rem;
+  color: #000;
+  margin-bottom: 20px;
+  transition: 2s;
+}
+.connect-section h2:hover {
+  transform: scale(1.2);
+  color: #FFF;
+  transition: 2s;
+}
+
+.message-animation {
+  height: 250px;
+  width: 250px;
+}
+
+.brain-image {
+  width: 100px;
+  height: auto;
+}
+
+.form-section {
+  flex: 2;
+  padding: 20px;
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-row {
+  display: flex;
+  gap: 20px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px;
+  width: 100%;
+}
+
+.form-group label {
+  font-weight: bold;
+  margin-bottom: 5px;
+  color: #000;
+}
+
+.form-group input,
+.form-group textarea {
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.2);
+  background-color: #FFF;
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+  color: #AAA;
+}
+
+textarea {
+  resize: none;
+}
+
+button {
+  padding: 10px 20px;
+  background-color: #000;
+  color: #FFF;
+  font-weight: bold;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+button:hover {
+  transform: scale(1.05);
+}
+
+/* Responsive adjustments for tablets */
+@media (max-width: 768px) {
+  .contact-container {
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    max-width: 90%;
+  }
+
+  .form-section{
+    width:80%;
+    margin:0 auto;
+  }
+  .connect-section h2 {
+    font-size: 2.5rem;
+  }
+
+  .message-animation {
+    height: 200px;
+    width: 200px;
+  }
+
+  .form-row {
+    flex-direction: column;
+    gap: 0;
+  }
+
+  button {
+    padding: 8px 16px;
+  }
+}
+
+/* Responsive adjustments for mobile devices */
+@media (max-width: 480px) {
+  .connect-section h2 {
+    font-size: 2rem;
+  }
+
+  .message-animation {
+    height: 150px;
+    width: 150px;
+  }
+
+  .form-group input,
+  .form-group textarea {
+    padding: 8px;
+  }
+
+  button {
+    width: 100%;
+    padding: 10px;
+    font-size: 1rem;
+  }
+}

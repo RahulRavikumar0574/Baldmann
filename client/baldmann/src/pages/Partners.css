@@ -1,0 +1,52 @@
+.main-partners {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px 20px;
+    background-color: #000;
+}
+
+.main-partners h1 {
+    font-size: 2.5rem;
+    color: #fff;
+    margin-bottom: 20px;
+    text-align: center;
+}
+.logos{
+    display: flex;
+    justify-content: center;
+
+}
+
+.udl-logo, .kvm-logo {
+    width: 150px; /* Adjust as necessary */
+    height: 150px;
+    border-radius: 50%; /* Ensures the logo is circular */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+    margin: 15px;
+}
+
+.udl-logo:hover {
+    transform: scale(1.1); /* Slightly enlarges the logo on hover */
+}
+.kvm-logo:hover {
+    transform: scale(1.1); /* Slightly enlarges the logo on hover */
+}
+
+@media (max-width: 768px) {
+    .main-partners h1 {
+        font-size: 2rem;
+    }
+
+    .udl-logo {
+        width: 120px;
+        height: 120px;
+    }
+    .kvm-logo {
+        width: 120px;
+        height: 120px;
+    }
+    
+
+}

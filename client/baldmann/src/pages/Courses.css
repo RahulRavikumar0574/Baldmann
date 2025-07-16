@@ -1,0 +1,116 @@
+
+/* .play-button{
+  margin: 0 80px;
+  border-radius: 20px;
+
+}
+.stop-button{
+  margin: 0 80px;
+  border-radius: 20px;
+} */
+/* new style*/
+.course-main {
+  padding: 60px 5%;
+  background-color: #000;
+  color: #fff;
+  min-height: 90vh;
+  border-radius: 20px;
+  margin: 6px;
+}
+
+.course-hero {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.course-h-left {
+  max-width: 600px;
+  margin-top: 100px;
+}
+
+.learn-text {
+  font-size: 3.4rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+  line-height: 1.2;
+}
+
+.learn-text span {
+  color: #FFD700;
+}
+
+.learn-tagline {
+  font-size: 1.6rem;
+  color: #bbb;
+  margin-bottom: 30px;
+}
+
+.learn-icons {
+  font-size: 2rem;
+  display: flex;
+  gap: 20px;
+  margin-bottom: 30px;
+}
+
+.icon-style {
+  transition: transform 0.3s ease;
+}
+
+.icon-style:hover {
+  transform: scale(1.2);
+}
+
+.explore {
+  background-color: transparent;
+  color: #fff;
+  border: 2px solid #FFD700;
+  padding: 12px 24px;
+  font-size: 1rem;
+  font-weight: bold;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.explore:hover {
+  background-color: #FFD700;
+  color: #000;
+}
+
+/* Right animation */
+.course-h-right {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 40px;
+}
+
+@media (max-width: 900px) {
+  .course-hero {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .course-h-left {
+    max-width: 100%;
+  }
+
+  .course-h-right {
+    margin-top: 40px;
+  }
+
+  .learn-text {
+    font-size: 2.4rem;
+  }
+
+  .learn-tagline {
+    font-size: 1.2rem;
+  }
+  .learn-icons{
+    display: none;
+  }
+}
+

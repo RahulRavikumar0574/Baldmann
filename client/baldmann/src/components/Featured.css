@@ -1,0 +1,228 @@
+
+
+/* === FEATURED SECTION CONTAINER === */
+.featured-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+  width: 100%;
+  margin: 50px 0;
+  padding: 30px;
+  background: linear-gradient(135deg, #f4e17a, #eacbed);
+  border-radius: 20px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* === SECTION TITLE === */
+.featured-title {
+  font-size: 2.8rem;
+  font-weight: 700;
+  color: #000;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+/* === LATEST BLOG CARD === */
+.latest-blog-card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 70%;
+  background: #fff;
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  text-align: center;
+}
+
+.latest-blog-content {
+  text-align: center;
+}
+
+.latest-blog-title {
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: #000;
+  margin-bottom: 10px;
+  word-wrap: break-word;
+}
+
+.latest-blog-author {
+  font-size: 1.2rem;
+  color: #555;
+  margin-bottom: 20px;
+}
+
+/* === READ MORE BUTTON === */
+.latest-blog-read{
+  padding: 10px 20px;
+  background-color: #ffd700;
+  color: #000;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s ease;
+}
+
+.latest-blog-read:hover,
+.blog-read:hover {
+  background-color: #eacbed;
+}
+
+/* === BLOG CAROUSEL === */
+.other-blogs {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 90%;
+}
+
+/* === ARROW BUTTONS === */
+.arrow {
+  cursor: pointer;
+  font-size: 2.5rem;
+  color: #000;
+  transition: color 0.3s ease;
+}
+
+.arrow:hover {
+  color: #ffd700;
+}
+
+/* === BLOGS LIST WRAPPER === */
+.blogs-list {
+  display: flex;
+  gap: 20px;
+  width: 80%;
+  padding: 10px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+}
+
+.blogs-list::-webkit-scrollbar {
+  display: none;
+}
+
+/* === INDIVIDUAL BLOG CARD === */
+.blog-card {
+  flex: 0 0 30%;
+  background: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-width: 250px;
+  max-width: 300px;
+}
+
+/* === BLOG CONTENT === */
+.blog-title {
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: #000;
+  margin-bottom: 10px;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+.blog-author {
+  font-size: 1rem;
+  color: #555;
+  font-style: italic;
+  margin-bottom: 15px;
+}
+
+/* === RESPONSIVE STYLES === */
+@media (max-width: 1024px) {
+  .blog-card {
+    flex: 0 0 40%;
+  }
+
+  .blogs-list {
+    width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .latest-blog-card {
+    width: 90%;
+    flex-direction: column;
+    padding: 15px;
+  }
+
+  .blogs-list {
+    gap: 15px;
+    padding: 10px 5px;
+    width: 95%;
+  }
+
+  .blog-card {
+    flex: 0 0 70%;
+    padding: 15px;
+  }
+
+  .blog-title {
+    font-size: 1.2rem;
+  }
+
+  .featured-title {
+    font-size: 2rem;
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .blog-card {
+    flex: 0 0 85%;
+  }
+
+  .blog-title {
+    font-size: 1rem;
+  }
+
+  .blog-read {
+    font-size: 0.85rem;
+    padding: 6px 10px;
+  }
+
+  .arrow {
+    font-size: 2rem;
+  }
+
+  .featured-section {
+    padding: 20px 10px;
+  }
+}
+/* Add this */
+.blog-content {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+/* Add this to push the button to the bottom */
+.blog-read {
+  margin-top: auto;
+  padding: 8px 15px;
+  background-color: #ffd700;
+  color: #000;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: background-color 0.3s ease;
+}
+.blogs-list {
+  display: flex;
+  gap: 20px;
+  width: 80%;
+  padding: 10px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  align-items: stretch; /* Ensures equal card height */
+}

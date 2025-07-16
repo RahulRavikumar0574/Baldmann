@@ -1,0 +1,128 @@
+/* 
+.hero-section-main{
+    height:100vh;
+    background-color: #000;
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    width:100%;
+}
+.hero-section-animation{
+    width:550px;
+    height: 550px;
+    padding-top: 120px;
+    padding-right: 80px;
+    grid-column: 4/5;
+}
+.hero-section-text{
+    color:#fff;
+    grid-column: 1/4;
+    
+}
+.hero-section-text p{
+    padding: 0 0 0 150px;
+    font-size: 4.5rem;
+    margin: 200px auto 0 auto; 
+    letter-spacing: .15em; 
+    font-weight: 900px;
+}
+.hero-section-text span{
+    color:#FFD700;
+    font-style: italic;
+    font-weight: 900px;
+}
+@media (max-width:1440px){
+    .hero-section-animation{
+        display: none;
+    }
+    .hero-section-main{
+        width:100%;
+        height:auto;
+    }
+    .hero-section-text{
+        width:100%;
+        background-color: #000;
+        margin-top: 0;
+    }
+    .hero-section-text p{
+        height:200px;
+        font-size: 2rem;
+        text-align: center;
+        padding: 0;
+    }
+}
+
+
+ */
+
+.hero-section-main {
+    height: 100vh;
+    background-color: #000;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    /* flex-wrap: wrap; */
+    padding: 0 5%;
+    box-sizing: border-box;
+}
+
+.hero-section-text {
+    color: #fff;
+    flex: 1 1 500px;
+    padding: 40px 20px;
+}
+
+.hero-section-text p {
+    font-size: 4.3rem;
+    line-height: 1.7;
+    font-weight: 900;
+    letter-spacing: 0.1em;
+    margin: 0 auto;
+}
+
+.hero-section-text span {
+    color: #FFD700;
+    font-style: italic;
+    font-weight: 900;
+}
+
+.hero-section-animation {
+    flex: 1 1 400px;
+    max-width: 550px;
+    height: auto;
+    padding: 20px;
+    margin-top: 40px;
+}
+
+@media (max-width: 1124px) {
+    .hero-section-main {
+        flex-direction: column;
+        justify-content:flex-start;
+        text-align: center;
+        height: auto;
+        padding-top: 50px;
+    }
+
+    .hero-section-text p {
+        font-size: 2.5rem;
+        padding: 0;
+        margin-top: 50px;
+    }
+
+    .hero-section-animation {
+        display: none;
+    }
+}
+
+@media (max-width: 600px) {
+    .hero-section-text p {
+        font-size: 2rem;
+        margin-top: 50px;
+    }
+
+    .hero-section-animation {
+        display: none;
+    }
+}
+

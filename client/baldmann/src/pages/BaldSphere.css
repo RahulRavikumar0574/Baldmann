@@ -1,0 +1,96 @@
+/* .sphere-main{
+    text-align: center;
+    background-color: #f9f9f9;
+    margin-top: 50px;
+    background-color: #000;
+    width:70%;
+    margin: 0 auto;
+    border-radius: 20px;
+    margin-top: 50px;
+}
+
+.sphere-animation{
+    height:400px;
+}
+
+.sphere-title{
+    font-size: 3.5rem;
+    margin: auto 0;
+    width: 40%;
+    font-weight: 700;
+    color:#fff;
+}
+.sphere-div{
+    display: flex;
+    justify-content: space-around;
+    justify-items: flex-start;
+} */
+
+.sphere-main {
+    text-align: center;
+    background-color: #000;
+    margin-top: 50px;
+    width: 70%;
+    margin: 0 auto;
+    border-radius: 20px;
+    padding: 20px;
+    margin-top: 50px;
+}
+
+.sphere-animation {
+    height: 400px;
+    max-width: 100%; /* Ensures animation scales properly */
+}
+
+.sphere-title {
+    font-size: 3.5rem;
+    margin: auto 0;
+    width: 40%;
+    font-weight: 700;
+    color: #fff;
+}
+
+.sphere-div {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+/* Media Queries */
+
+/* For tablets (max-width: 768px) */
+@media (max-width: 768px) {
+    .sphere-main {
+        width: 90%;
+    }
+
+    .sphere-div {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .sphere-title {
+        font-size: 2.5rem;
+        width: 100%; /* Full width for better readability */
+        text-align: center;
+    }
+
+    .sphere-animation {
+        height: 300px; /* Adjust height for smaller screens */
+    }
+}
+
+/* For mobile devices (max-width: 480px) */
+@media (max-width: 480px) {
+    .sphere-main {
+        width: 95%;
+    }
+
+    .sphere-title {
+        font-size: 2rem;
+    }
+
+    .sphere-animation {
+        height: 200px;
+    }
+}

@@ -1,0 +1,134 @@
+.main-nav {
+  width: 90%; /* Reduced width for a sleek appearance */
+  height: 4.5rem; /* Adjusted height */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #EACBEDcc; /* Black with translucency */
+  position: fixed;
+  top: 1rem; /* Space from the top */
+  left: 50%; /* Center horizontally */
+  transform: translateX(-50%);
+  z-index: 2;
+  border-radius: 15px; /* Rounded corners */
+  box-shadow: rgba(0, 0, 0, 0.5) 0px 4px 12px; /* Soft shadow */
+  padding: 0 1.5rem;
+}
+.logo{
+  display: flex;
+}
+
+/* Logo section */
+.logo img {
+  height: 40px;
+  width: 40px;
+}
+
+.company-name {
+  font-weight: 700;
+  font-size: 1.5rem;
+  margin-left: 0.5rem;
+  color: #fff; /* White text for the logo */
+}
+
+/* Desktop menu styling */
+.menu-link ul {
+  display: flex;
+  gap: 2rem; /* Adjusted spacing between items */
+}
+
+.menu-link ul li {
+  list-style: none;
+}
+
+.menu-link ul li a {
+  text-decoration: none;
+  color: #fff; /* White text for links */
+  font-size: 1.2rem;
+  font-weight: 600;
+  transition: color 0.3s ease, background-color 0.3s ease;
+  padding: 7px 15px; /* Padding for hover effect */
+  border-radius: 15px; /* Slightly rounded hover effect */
+}
+
+.menu-link ul li a:hover {
+  background-color: #e7df4a33; /* Subtle hover background */
+}
+
+/* Hamburger menu icon for mobile */
+.hamburger-menu {
+  display: none; /* Hidden on desktop */
+  font-size: 1.5rem;
+  color: #fff; /* White color for the icon */
+  cursor: pointer;
+}
+
+/* Mobile menu styling */
+.mobile-menu-link {
+  display: none; /* Hidden by default */
+  position: absolute;
+  top: 4.5rem; /* Just below the navbar */
+  left: 0;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.9); /* Slightly darker black */
+  padding: 1rem 0;
+  border-radius: 0 0 10px 10px; /* Rounded corners for the dropdown */
+}
+
+.mobile-menu-link ul {
+  display: flex;
+  flex-direction: column; /* Vertical menu for mobile */
+  gap: 1rem; /* Space between items */
+  padding: 0 1.5rem;
+}
+
+.mobile-menu-link ul li {
+  list-style: none;
+}
+
+.mobile-menu-link ul li a {
+  text-decoration: none;
+  color: #fff; /* White text for mobile menu */
+  font-size: 1rem;
+  font-weight: 600;
+  transition: color 0.3s ease, background-color 0.3s ease;
+  padding: 5px 10px; /* Padding for hover effect */
+  border-radius: 10px;
+}
+
+.mobile-menu-link ul li a:hover {
+  background-color: rgba(255, 255, 255, 0.2); /* Subtle hover background */
+}
+
+/* Media query for tablets and smaller screens */
+@media (max-width: 1110px) {
+  .menu-link {
+    display: none; /* Hide desktop menu */
+  }
+
+  .hamburger-menu {
+    display: block; /* Show hamburger menu */
+  }
+
+  .mobile-menu-link {
+    display: flex; /* Show mobile menu */
+    flex-direction: column;
+  }
+}
+
+/* Media query for smaller screens (mobile-first design) */
+@media (max-width: 520px) {
+  .main-nav {
+    width: 95%; /* Slightly wider for small screens */
+    padding: 0 1rem;
+  }
+
+  .company-name {
+    font-size: 1.3rem; /* Adjusted font size */
+  }
+
+  .mobile-menu-link ul {
+    gap: 0.8rem; /* Reduced spacing for smaller screens */
+    padding: 0 1rem;
+  }
+}
