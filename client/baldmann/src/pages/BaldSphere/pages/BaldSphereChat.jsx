@@ -461,10 +461,10 @@ export default function BaldSphereChat() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 flex justify-center items-start py-8">
-      <div className="w-full max-w-7xl flex rounded-2xl shadow-lg overflow-hidden bg-white/0">
+    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 flex flex-col items-center py-8 px-2 sm:px-4">
+      <div className="w-full max-w-7xl flex flex-col md:flex-row rounded-2xl shadow-lg overflow-hidden bg-white/0">
         {/* Brain Visualization Left */}
-        <div className="flex-1 flex items-center justify-center bg-gray-100 border-r border-gray-200 min-h-[600px]">
+        <div className="flex-1 flex items-center justify-center bg-gray-100 border-b md:border-b-0 md:border-r border-gray-200 min-h-[300px] md:min-h-[600px] h-[300px] md:h-auto">
           <div className="w-full h-full flex items-center justify-center">
             <Canvas camera={{ position: [0, 0, 4], fov: 60 }} style={{ width: '100%', height: '100%', background: 'transparent' }}>
               <ambientLight intensity={0.7} />
@@ -474,7 +474,7 @@ export default function BaldSphereChat() {
           </div>
         </div>
         {/* Chat Panel Right */}
-        <div className="w-full max-w-md flex flex-col h-[600px] bg-yellow-50 border-l border-gray-200">
+        <div className="w-full max-w-md flex flex-col h-[400px] md:h-[600px] bg-yellow-50 border-t md:border-t-0 md:border-l border-gray-200">
           {/* Header */}
           <div className="px-6 py-4 border-b border-gray-200 bg-yellow-100 sticky top-0 z-10">
             <div className="flex items-center gap-3">

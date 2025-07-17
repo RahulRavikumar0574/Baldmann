@@ -32,7 +32,7 @@ export default function BaldSphereHome() {
           {/* Button group at the top */}
           <div className="flex flex-col items-center mb-10">
             <div className="flex gap-4 mb-8">
-              <a href="/baldsphere/app/" className="bg-yellow-500 hover:bg-yellow-600 text-black font-semibold py-4 px-10 rounded-full text-lg shadow-lg transition-all focus:outline-none focus:ring-2 focus:ring-yellow-400">
+              <a href="/baldsphere/app/chat" className="bg-yellow-500 hover:bg-yellow-600 text-black font-semibold py-4 px-10 rounded-full text-lg shadow-lg transition-all focus:outline-none focus:ring-2 focus:ring-yellow-400">
                 Start Exploring &rarr;
               </a>
               <a href="/baldsphere/app/how-it-works" className="bg-white border-2 border-gray-300 text-gray-700 font-semibold py-4 px-10 rounded-full text-lg shadow-sm hover:bg-gray-100 transition-all focus:outline-none focus:ring-2 focus:ring-yellow-400">
