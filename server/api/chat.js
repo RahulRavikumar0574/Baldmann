@@ -1,5 +1,5 @@
 // api/chat.js
-import { supabase } from '../server/supabaseClient';
+import { supabase } from '../supabaseClient.js';
 
 export default async function handler(req, res) {
   res.setHeader('Access-Control-Allow-Origin', 'https://baldmann.in');
