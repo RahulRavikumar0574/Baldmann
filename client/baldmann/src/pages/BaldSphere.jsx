@@ -27,27 +27,28 @@ function AuthPage() {
     setError('');
     setSuccess('');
 
-    // Mock authentication - bypass API call
-    if (loginData.email && loginData.password) {
-      // Simulate API delay
-      setTimeout(() => {
-        const mockUser = {
-          id: 1,
-          name: loginData.email.split('@')[0],
-          email: loginData.email
-        };
-        localStorage.setItem('user', JSON.stringify(mockUser));
-        localStorage.setItem('isLoggedIn', 'true');
-        setSuccess('Login successful! Redirecting...');
-        setTimeout(() => {
-          navigate('/baldsphere/app/');
-        }, 1000);
+    try {
+      const response = await fetch('https://baldmann-j659.vercel.app/api/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: loginData.email, password: loginData.password })
+      });
+      const data = await response.json();
+      if (!response.ok) {
+        setError(data.error || 'Login failed');
         setLoading(false);
-        }, 1000);
-      } else {
-      setError('Please enter both email and password');
-      setLoading(false);
+        return;
+      }
+      localStorage.setItem('user', JSON.stringify(data.user));
+      localStorage.setItem('isLoggedIn', 'true');
+      setSuccess('Login successful! Redirecting...');
+      setTimeout(() => {
+        navigate('/baldsphere/app/');
+      }, 1000);
+    } catch (err) {
+      setError('An error occurred during login.');
     }
+    setLoading(false);
   };
 
   const handleSignup = async (e) => {
@@ -61,20 +62,30 @@ function AuthPage() {
       setLoading(false);
       return;
     }
-
     if (signupData.password.length < 8) {
       setError('Password must be at least 8 characters long');
       setLoading(false);
       return;
     }
-
-    // Mock signup - bypass API call
-    setTimeout(() => {
-        setSuccess('Account created successfully! You can now log in.');
-        setIsLogin(true);
-        setSignupData({ name: '', email: '', password: '', confirmPassword: '' });
-      setLoading(false);
-    }, 1000);
+    try {
+      const response = await fetch('https://baldmann-j659.vercel.app/api/signup', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: signupData.email, password: signupData.password })
+      });
+      const data = await response.json();
+      if (!response.ok) {
+        setError(data.error || 'Signup failed');
+        setLoading(false);
+        return;
+      }
+      setSuccess('Account created successfully! You can now log in.');
+      setIsLogin(true);
+      setSignupData({ name: '', email: '', password: '', confirmPassword: '' });
+    } catch (err) {
+      setError('An error occurred during signup.');
+    }
+    setLoading(false);
   };
 
   const switchMode = () => {

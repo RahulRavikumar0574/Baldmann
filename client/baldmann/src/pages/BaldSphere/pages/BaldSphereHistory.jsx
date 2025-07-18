@@ -1,44 +1,23 @@
 import React, { useState, useEffect } from "react";
 
-// Mock chat sessions for demonstration
-const mockSessions = [
-  {
-    id: "1",
-    name: "Brain Exploration Session 1",
-    messages: [
-      { sender: "user", text: "think" },
-      { sender: "assistant", text: "Thinking involves the frontal lobe, particularly the prefrontal cortex for planning and decision-making." },
-      { sender: "user", text: "run" },
-      { sender: "assistant", text: "Running activates the motor cortex for movement control and cerebellum for coordination." }
-    ],
-    createdAt: new Date(Date.now() - 86400000), // 1 day ago
-    lastUpdated: new Date(Date.now() - 3600000) // 1 hour ago
-  },
-  {
-    id: "2",
-    name: "Brain Exploration Session 2",
-    messages: [
-      { sender: "user", text: "sing" },
-      { sender: "assistant", text: "Singing involves the temporal lobe for hearing, Broca's area for speech production, and Wernicke's area for language comprehension." },
-      { sender: "user", text: "dance" },
-      { sender: "assistant", text: "Dancing involves the motor cortex for movement, cerebellum for rhythm, and basal ganglia for coordination." }
-    ],
-    createdAt: new Date(Date.now() - 172800000), // 2 days ago
-    lastUpdated: new Date(Date.now() - 7200000) // 2 hours ago
-  }
-];
-
+// Remove mockSessions and use real API call
 export default function BaldSphereHistory() {
-  const [sessions, setSessions] = useState(mockSessions);
+  const [sessions, setSessions] = useState([]);
   const [selectedSession, setSelectedSession] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
-    // Simulate loading
+    const user = JSON.parse(localStorage.getItem('user'));
+    const user_id = user ? user.id : null;
+    if (!user_id) return;
     setIsLoading(true);
-    setTimeout(() => {
-      setIsLoading(false);
-    }, 1000);
+    fetch(`https://baldmann-j659.vercel.app/api/history/${user_id}`)
+      .then(res => res.json())
+      .then(data => {
+        setSessions(Array.isArray(data) ? data : []);
+        setIsLoading(false);
+      })
+      .catch(() => setIsLoading(false));
   }, []);
 
   const deleteSession = (sessionId) => {

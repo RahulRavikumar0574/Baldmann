@@ -404,7 +404,23 @@ export default function BaldSphereChat() {
   const [highlightedRegions, setHighlightedRegions] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const chatEndRef = useRef(null);
-  // Removed didMount and useEffect for auto-scrolling
+  // Add user_id retrieval (from localStorage)
+  const user = JSON.parse(localStorage.getItem('user'));
+  const user_id = user ? user.id : null;
+
+  // Fetch chat history on mount
+  useEffect(() => {
+    if (!user_id) return;
+    fetch(`https://baldmann-j659.vercel.app/api/history/${user_id}`)
+      .then(res => res.json())
+      .then(data => {
+        if (Array.isArray(data) && data.length > 0) {
+          // Use the most recent chat session
+          setMessages(data[0].messages || []);
+        }
+      })
+      .catch(() => {});
+  }, [user_id]);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -437,14 +453,22 @@ export default function BaldSphereChat() {
     try {
       await new Promise(resolve => setTimeout(resolve, 1000));
       const found = findBrainData(userInput);
+      let response;
       if (found) {
         setHighlightedRegions(found.region);
-        const response = ` **${found.keyword.toUpperCase()}** involves these brain regions:\n\n${found.region.map(region => `• **${region.replace('_', ' ').toUpperCase()}**`).join('\n')}\n\n${found.description}\n\nTry another action to explore more brain regions!`;
-        setMessages(prev => [...prev.slice(0, -1), { sender: "assistant", text: response }]);
+        response = ` **${found.keyword.toUpperCase()}** involves these brain regions:\n\n${found.region.map(region => `• **${region.replace('_', ' ').toUpperCase()}**`).join('\n')}\n\n${found.description}\n\nTry another action to explore more brain regions!`;
       } else {
         setHighlightedRegions([]);
-        const response = `I couldn't find specific brain data for "${userInput}". \n\nTry these actions instead:\n• think, run, sing, cook, read, dance, sleep, eat\n\nOr type 'help' for more examples!`;
-        setMessages(prev => [...prev.slice(0, -1), { sender: "assistant", text: response }]);
+        response = `I couldn't find specific brain data for "${userInput}". \n\nTry these actions instead:\n• think, run, sing, cook, read, dance, sleep, eat\n\nOr type 'help' for more examples!`;
+      }
+      setMessages(prev => [...prev.slice(0, -1), { sender: "assistant", text: response }]);
+      // Save chat to backend
+      if (user_id) {
+        await fetch('https://baldmann-j659.vercel.app/api/chat', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ user_id, messages: [...messages, { sender: "user", text: userInput }, { sender: "assistant", text: response }] })
+        });
       }
     } catch (error) {
       setMessages(prev => [...prev.slice(0, -1), { sender: "assistant", text: "Sorry, I encountered an error. Please try again!" }]);
