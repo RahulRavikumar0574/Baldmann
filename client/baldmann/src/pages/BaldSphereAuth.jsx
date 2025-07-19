@@ -20,6 +20,10 @@ export default function BaldSphereAuth({ onAuthSuccess }) {
     confirmPassword: ''
   });
 
+  const [showForgot, setShowForgot] = useState(false);
+  const [forgotEmail, setForgotEmail] = useState('');
+  const [forgotStatus, setForgotStatus] = useState('');
+
   const handleLogin = async (e) => {
     e.preventDefault();
     setLoading(true);
@@ -88,6 +92,19 @@ export default function BaldSphereAuth({ onAuthSuccess }) {
     setLoading(false);
   };
 
+  const handleForgotPassword = async (e) => {
+    e.preventDefault();
+    setForgotStatus('');
+    const response = await fetch('https://baldmann-j659.vercel.app/api/forgotPassword', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email: forgotEmail })
+    });
+    const data = await response.json();
+    if (response.ok) setForgotStatus('Check your email for a reset link!');
+    else setForgotStatus(data.error || 'Error sending reset email.');
+  };
+
   const switchMode = () => {
     setIsLogin(!isLogin);
     setError('');
@@ -96,24 +113,7 @@ export default function BaldSphereAuth({ onAuthSuccess }) {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 flex flex-col">
-      <nav className="fixed top-0 left-0 right-0 z-50 bg-white/10 backdrop-blur border-b border-gray-200 px-4 py-3">
-        <div className="max-w-6xl mx-auto flex items-center justify-between">
-          <div className="flex items-center gap-2">
-            <img 
-              src="/baldsphere/logo.svg" 
-              alt="Logo" 
-              className="w-6 h-6 rounded-full"
-            />
-            <span className="text-lg font-bold text-yellow-500">BaldSphere</span>
-          </div>
-          <a 
-            href="/" 
-            className="text-gray-600 hover:text-yellow-500 transition-colors text-sm font-medium"
-          >
-            ← Back to BaldMann
-          </a>
-        </div>
-      </nav>
+      
       <div className="flex-1 flex items-center justify-center px-4 sm:px-6 lg:px-8 py-12 pt-20">
         <div className="max-w-md w-full space-y-8">
           <div className="text-center">
@@ -171,6 +171,26 @@ export default function BaldSphereAuth({ onAuthSuccess }) {
                     placeholder="Enter your password"
                   />
                 </div>
+                {isLogin && !showForgot && (
+                  <button type="button" onClick={() => setShowForgot(true)} className="text-yellow-500 hover:text-yellow-600 font-medium transition-colors mb-2">
+                    Forgot Password?
+                  </button>
+                )}
+                {isLogin && showForgot && (
+                  <form onSubmit={handleForgotPassword} className="space-y-4 mb-2">
+                    <input
+                      type="email"
+                      value={forgotEmail}
+                      onChange={e => setForgotEmail(e.target.value)}
+                      placeholder="Enter your email"
+                      required
+                      className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:border-transparent bg-white"
+                    />
+                    <button type="submit" className="w-full bg-yellow-400 text-black font-semibold py-3 px-4 rounded-xl hover:bg-yellow-500 transition-all">Send Reset Link</button>
+                    <button type="button" onClick={() => setShowForgot(false)} className="w-full mt-2 text-gray-500 hover:text-yellow-600">Back to Login</button>
+                    {forgotStatus && <div className="text-center text-sm mt-2">{forgotStatus}</div>}
+                  </form>
+                )}
                 <button
                   type="submit"
                   disabled={loading}
