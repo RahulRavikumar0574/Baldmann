@@ -15,7 +15,7 @@ export default function BaldSphereHistory() {
     const user_id = user ? user.id : null;
     if (!user_id) return;
     setIsLoading(true);
-    fetch(`https://baldmann-j659.vercel.app/api/history/${user_id}`)
+    fetch(`https://baldmann-j659.vercel.app/api/history?user_id=${user_id}`)
       .then(res => res.json())
       .then(data => {
         setSessions(Array.isArray(data) ? data : []);
@@ -45,10 +45,19 @@ export default function BaldSphereHistory() {
     );
   }
 
-  const deleteSession = (sessionId) => {
-    setSessions(prev => prev.filter(session => session.id !== sessionId));
-    if (selectedSession?.id === sessionId) {
-      setSelectedSession(null);
+  const deleteSession = async (sessionId) => {
+    const response = await fetch('https://baldmann-j659.vercel.app/api/deleteHistory', {
+      method: 'DELETE',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ id: sessionId })
+    });
+    if (response.ok) {
+      setSessions(prev => prev.filter(session => session.id !== sessionId));
+      if (selectedSession?.id === sessionId) {
+        setSelectedSession(null);
+      }
+    } else {
+      alert('Failed to delete session.');
     }
   };
 
