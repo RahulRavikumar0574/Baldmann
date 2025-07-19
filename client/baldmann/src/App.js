@@ -23,13 +23,12 @@ function AppContent() {
   const location = useLocation();
   const isBaldSphereApp = location.pathname.startsWith('/baldsphere/app/');
   const isBaldSphereAuth = location.pathname === '/baldsphere' || location.pathname === '/baldsphere/auth';
-  const isBaldSphereRoute = isBaldSphereApp || isBaldSphereAuth;
-  
+
   return (
     <>
       <ScrollToTop/>
-      {isBaldSphereRoute ? <BaldSphereNavbar /> : <Navbar />}
-      
+      {/* Only show BaldSphereNavbar for /baldsphere/app/*, show Navbar for others, and no navbar for /baldsphere or /baldsphere/auth */}
+      {isBaldSphereApp ? <BaldSphereNavbar /> : (!isBaldSphereAuth && <Navbar />)}
       <Routes>
         {/* Home route with main sections */}
         <Route 

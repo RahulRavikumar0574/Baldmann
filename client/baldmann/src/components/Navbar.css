@@ -6,7 +6,7 @@
   justify-content: space-between;
   background: #EACBEDcc; /* Black with translucency */
   position: fixed;
-  top: 1rem; /* Space from the top */
+  top: 0; /* Space from the top */
   left: 50%; /* Center horizontally */
   transform: translateX(-50%);
   z-index: 2;
