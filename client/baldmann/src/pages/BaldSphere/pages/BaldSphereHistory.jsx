@@ -28,6 +28,12 @@ export default function BaldSphereHistory() {
     setIsAuthenticated(true);
   };
 
+  const handleLogout = () => {
+    localStorage.removeItem('user');
+    localStorage.removeItem('isLoggedIn');
+    window.location.reload();
+  };
+
   if (!isAuthenticated) {
     return <BaldSphereAuth onAuthSuccess={handleAuthSuccess} />;
   }
@@ -100,6 +106,12 @@ export default function BaldSphereHistory() {
               className="bg-red-500 text-white px-6 py-3 rounded-xl hover:bg-red-600 disabled:opacity-50 disabled:cursor-not-allowed transition-all font-medium"
             >
               Clear All History
+            </button>
+            <button
+              onClick={handleLogout}
+              className="bg-yellow-300 text-gray-800 px-6 py-3 rounded-xl hover:bg-gray-400 transition-all font-medium"
+            >
+              Logout
             </button>
           </div>
 
