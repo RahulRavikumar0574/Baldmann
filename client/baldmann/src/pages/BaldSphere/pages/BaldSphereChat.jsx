@@ -459,17 +459,10 @@ export default function BaldSphereChat() {
         response = ` **${found.keyword.toUpperCase()}** involves these brain regions:\n\n${found.region.map(region => `• **${region.replace('_', ' ').toUpperCase()}**`).join('\n')}\n\n${found.description}\n\nTry another action to explore more brain regions!`;
       } else {
         setHighlightedRegions([]);
-        response = `I couldn't find specific brain data for "${userInput}". \n\nTry these actions instead:\n• think, run, sing, cook, read, dance, sleep, eat\n\nOr type 'help' for more examples!`;
+        response = `I couldn't find specific brain data for \"${userInput}\". \n\nTry these actions instead:\n• think, run, sing, cook, read, dance, sleep, eat\n\nOr type 'help' for more examples!`;
       }
       setMessages(prev => [...prev.slice(0, -1), { sender: "assistant", text: response }]);
-      // Save chat to backend
-      if (user_id) {
-        await fetch('https://baldmann-j659.vercel.app/api/chat', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ user_id, messages: [...messages, { sender: "user", text: userInput }, { sender: "assistant", text: response }] })
-        });
-      }
+      // Removed: Save chat to backend after every message
     } catch (error) {
       setMessages(prev => [...prev.slice(0, -1), { sender: "assistant", text: "Sorry, I encountered an error. Please try again!" }]);
     } finally {
@@ -477,7 +470,14 @@ export default function BaldSphereChat() {
     }
   }
 
-  const handleReset = () => {
+  const handleReset = async () => {
+    if (user_id && messages.length > 1) {
+      await fetch('https://baldmann-j659.vercel.app/api/chat', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ user_id, messages })
+      });
+    }
     setMessages([
       { sender: "assistant", text: "Hi! I'm your Brain Assistant. Type any action (like 'think', 'run', 'sing', or 'cook') and I'll show you which brain regions are responsible for it. Type 'help' for more examples!" }
     ]);

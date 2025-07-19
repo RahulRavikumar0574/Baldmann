@@ -1,10 +1,14 @@
 import React, { useState, useEffect } from "react";
+import BaldSphereAuth from "../../BaldSphereAuth";
 
-// Remove mockSessions and use real API call
 export default function BaldSphereHistory() {
   const [sessions, setSessions] = useState([]);
   const [selectedSession, setSelectedSession] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
+  const [isAuthenticated, setIsAuthenticated] = useState(() => {
+    const user = JSON.parse(localStorage.getItem('user'));
+    return !!user;
+  });
 
   useEffect(() => {
     const user = JSON.parse(localStorage.getItem('user'));
@@ -18,7 +22,28 @@ export default function BaldSphereHistory() {
         setIsLoading(false);
       })
       .catch(() => setIsLoading(false));
-  }, []);
+  }, [isAuthenticated]);
+
+  const handleAuthSuccess = () => {
+    setIsAuthenticated(true);
+  };
+
+  if (!isAuthenticated) {
+    return <BaldSphereAuth onAuthSuccess={handleAuthSuccess} />;
+  }
+
+  if (isLoading) {
+    return (
+      <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100">
+        <div className="pt-20 lg:pt-24 flex items-center justify-center min-h-[50vh]">
+          <div className="text-center">
+            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-yellow-500 mx-auto mb-4"></div>
+            <p className="text-gray-600">Loading chat history...</p>
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   const deleteSession = (sessionId) => {
     setSessions(prev => prev.filter(session => session.id !== sessionId));
@@ -45,19 +70,6 @@ export default function BaldSphereHistory() {
     const firstUserMessage = session.messages.find(msg => msg.sender === "user");
     return firstUserMessage ? firstUserMessage.text : "No messages";
   };
-
-  if (isLoading) {
-    return (
-      <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100">
-        <div className="pt-20 lg:pt-24 flex items-center justify-center min-h-[50vh]">
-          <div className="text-center">
-            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-yellow-500 mx-auto mb-4"></div>
-            <p className="text-gray-600">Loading chat history...</p>
-          </div>
-        </div>
-      </div>
-    );
-  }
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100">

@@ -23,7 +23,7 @@ function AppContent() {
   const location = useLocation();
   const isBaldSphereApp = location.pathname.startsWith('/baldsphere/app/');
   const isBaldSphereAuth = location.pathname === '/baldsphere' || location.pathname === '/baldsphere/auth';
-
+  
   return (
     <>
       <ScrollToTop/>
